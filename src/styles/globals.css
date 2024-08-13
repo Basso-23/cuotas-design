@@ -1,33 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "@fontsource-variable/nunito";
+@import "@fontsource-variable/inter";
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  background-color: #f5faff;
+  color: #0b223c;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.inter {
+  font-family: "Inter Variable", sans-serif;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.nunito {
+  font-family: "Nunito Variable", sans-serif;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.sombra {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
