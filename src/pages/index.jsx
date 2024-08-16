@@ -1,4 +1,5 @@
 import React from "react";
+import { cuotas } from "@/json/cuotas";
 
 const Home = () => {
   return (
@@ -10,7 +11,7 @@ const Home = () => {
           }}
           className="w-full h-full bg-cover bg-top bg-no-repeat flex justify-center items-center"
         >
-          <div className="mt-[-150px] max-w-[1500px] w-full text-white px-12 relative">
+          <div className="mt-[-150px] max-w-[1596px] w-full text-white px-12 relative">
             <div className="inter font-bold text-[55px] mb-4">
               Paga tus cuotas fácil y rápido
             </div>
@@ -42,7 +43,26 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="max-w-[1500px] h-[800px] w-full px-12 bg-white mx-auto rounded-tr-[30px] rounded-tl-[30px] sombra mt-[-150px]"></div>
+      <div className="max-w-[1500px] h-[800px] w-full px-12 bg-white mx-auto rounded-tr-[30px] rounded-tl-[30px] sombra mt-[-150px]">
+        <div className="grid grid-cols-3">
+          {cuotas.map((item, index) => (
+            <div key={index}>
+              <div className=" text-center">{item.title}</div>
+
+              {Array.from({ length: 10 }).map((_, i) => (
+                <div className="grid grid-cols-3" key={i}>
+                  <div>
+                    {item.letras.label}
+                    {item.letras.numero + i}
+                  </div>
+                  <div>{item.letras.dinero.toFixed(2)}</div>
+                  <div>{item.letras.fecha}</div>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
 
       <div className="fixed bottom-0 w-full border-t border-[#d1d1d1] bg-white ">
         <div className="max-w-[1596px] mx-auto py-4 inter font-light text-[#b8b8b8] text-sm px-12">
