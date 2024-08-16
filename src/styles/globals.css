@@ -20,3 +20,75 @@
 .sombra {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
+
+.all-facturas {
+  display: flex;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  height: fit-content;
+  gap: 40px;
+}
+
+.factura-container {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border-radius: 10px;
+  width: 390px;
+}
+
+.factura-container .factura-line:nth-child(even) {
+  background-color: white;
+}
+
+.factura-container .factura-line:nth-child(odd) {
+  background-color: #f5f5f4;
+}
+
+.factura-line {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
+
+.shadowCarouselLeft {
+  position: absolute;
+  bottom: 0px;
+  height: 85%;
+  width: 100px;
+  background: linear-gradient(
+    90deg,
+    rgb(255, 255, 255) 1%,
+    rgba(255, 255, 255, 0) 75%
+  );
+}
+
+.shadowCarouselRight {
+  position: absolute;
+  bottom: 0px;
+  height: 85%;
+  width: 100px;
+  background: linear-gradient(
+    -90deg,
+    rgb(255, 255, 255) 1%,
+    rgba(255, 255, 255, 0) 75%
+  );
+}
+
+.fixedCenterY {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.fixedCenterX {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.fixedCenterXnY {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

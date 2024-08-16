@@ -43,25 +43,50 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="max-w-[1500px] h-[800px] w-full px-12 bg-white mx-auto rounded-tr-[30px] rounded-tl-[30px] sombra mt-[-150px]">
-        <div className="grid grid-cols-3">
-          {cuotas.map((item, index) => (
-            <div key={index}>
-              <div className=" text-center">{item.title}</div>
-
-              {Array.from({ length: 10 }).map((_, i) => (
-                <div className="grid grid-cols-3" key={i}>
-                  <div>
-                    {item.letras.label}
-                    {item.letras.numero + i}
-                  </div>
-                  <div>{item.letras.dinero.toFixed(2)}</div>
-                  <div>{item.letras.fecha}</div>
+      <div className="max-w-[1500px] h-[650px] w-full bg-white mx-auto rounded-tr-[30px] rounded-tl-[30px] sombra mt-[-150px] flex items-center  relative">
+        <div className="w-full h-full flex items-center overflow-auto">
+          <div className="all-facturas ml-16 mr-16 nunito">
+            {cuotas.map((item, index) => (
+              <div
+                className="factura-container my-auto rounded-md overflow-hidden"
+                key={index}
+              >
+                <div className="text-center !bg-[#1776D8] text-white font-bold py-3">
+                  {item.title}
                 </div>
-              ))}
-            </div>
-          ))}
+
+                {Array.from({ length: 10 }).map((_, i) => (
+                  <div className="factura-line" key={i}>
+                    <div className="grid grid-cols-3  border-r col-span-3">
+                      <div className="flex gap-3 col-span-2 text-[#0B223C] font-bold">
+                        <div
+                          style={{
+                            backgroundImage:
+                              "url(https://i.imgur.com/27GVE5B.png)",
+                          }}
+                          className="w-5 aspect-square bg-contain bg-top bg-no-repeat my-auto"
+                        ></div>
+                        {item.letras.label}
+                        {item.letras.numero + i}
+                      </div>
+                      <div className="col-span-1 text-[#1776D8] font-bold -ml-2">
+                        ${item.letras.dinero.toFixed(2)}
+                      </div>
+                    </div>
+                    <div className="flex justify-end gap-3 col-span-2 pl-4">
+                      <div className="bg-[#F73838] text-white font-medium text-[13px] leading-none my-auto py-[5px] rounded-[3px] px-2">
+                        {item.letras.fecha}
+                      </div>
+                      <div className="w-5 h-5 my-auto border-[#0B223C] border-2 rounded-full"></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
+        <div className="shadowCarouselLeft fixedCenterY hidden"></div>
+        <div className="shadowCarouselRight fixedCenterY right-0 hidden"></div>
       </div>
 
       <div className="fixed bottom-0 w-full border-t border-[#d1d1d1] bg-white ">
