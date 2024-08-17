@@ -1,63 +1,78 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { cuotas } from "@/json/cuotas";
 
 const Home = () => {
+  const [tempKey, setTempKey] = useState(3);
+
   return (
     <main>
-      <div className="bg-[#1776D8] h-[450px] w-full">
-        <div
-          style={{
-            backgroundImage: "url(https://i.imgur.com/5INhM0k.png)",
-          }}
-          className="w-full h-full bg-cover bg-top bg-no-repeat flex justify-center items-center"
-        >
-          <div className="mt-[-150px] max-w-[1596px] w-full text-white px-12 relative">
-            <div className="inter font-bold text-[55px] mb-4">
-              Paga tus cuotas fácil y rápido
-            </div>
+      <div className="lg:h-[100vh] h-[100dvh] flex w-full flex-col bg-[#1778D9]">
+        {/*//* Header section */}
+        <section className="lg:h-[35%] h-[28%] bg-[#1778D9] w-full text-center text-white">
+          <div
+            style={{
+              backgroundImage: "url(https://i.imgur.com/5INhM0k.png)",
+            }}
+            className="w-full h-full bg-cover bg-top bg-no-repeat flex"
+          >
+            <div className="m-auto h-fit flex flex-col gap-[min(4vw,20px)]">
+              {/*//* Titulo */}
+              <h1 className="inter font-bold text-[min(6vw,40px)] leading-none">
+                Paga tus cuotas fácil y rápido
+              </h1>
 
-            <div className="nunito font-bold flex justify-between items-center">
-              <div className="flex gap-20">
+              {/*//* Montos */}
+              <div className="flex gap-[min(10vw,50px)] nunito font-bold mx-auto w-fit items-center">
                 <div>
-                  <div className="text-[20px] opacity-80">Subtotal</div>
-                  <div className="text-[30px]">$508.99</div>
+                  <div className="text-[min(3.8vw,18px)] opacity-80">
+                    Subtotal
+                  </div>
+                  <div className="text-[min(4.5vw,25px)]">$508.99</div>
                 </div>
                 <div>
-                  <div className="text-[20px] opacity-80">ITBMS</div>
-                  <div className="text-[30px]">$35.63</div>
+                  <div className="text-[min(3.8vw,18px)] opacity-80">ITBMS</div>
+                  <div className="text-[min(4.5vw,25px)]">$35.63</div>
                 </div>
                 <div>
-                  <div className="text-[20px] opacity-80">Total</div>
-                  <div className="text-[30px]">$544.62</div>
+                  <div className="text-[min(3.8vw,18px)] opacity-80">Total</div>
+                  <div className="text-[min(4.5vw,25px)]">$544.62</div>
                 </div>
               </div>
 
-              <div
-                style={{
-                  backgroundImage: "url(https://i.imgur.com/eL5Ub7y.png)",
-                }}
-                className="w-[200px] h-[50px] bg-contain bg-top bg-no-repeat my-auto rounded-lg"
-              ></div>
+              {/*//* Yappy btn */}
+              <div className="h-[min(12vw,50px)] aspect-[2/4] w-full max-w-[572px] bg-white rounded-md flex mt-1 cursor-pointer hover:opacity-80 active:scale-[98%]">
+                <div
+                  style={{
+                    backgroundImage: "url(https://i.imgur.com/eL5Ub7y.png)",
+                  }}
+                  className="w-full h-full bg-contain bg-top bg-no-repeat m-auto"
+                ></div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </section>
 
-      <div className="max-w-[1500px] h-[650px] w-full bg-white mx-auto rounded-tr-[30px] rounded-tl-[30px] sombra mt-[-150px] flex items-center  relative">
-        <div className="w-full h-full flex items-center overflow-auto">
-          <div className="all-facturas ml-16 mr-16 nunito">
+        {/*//* Cuotas section */}
+        <section className="bg-[#ffffff] flex-1 rounded-tr-[30px] rounded-tl-[30px] px-5 py-4 flex">
+          {/*//* All cuotas */}
+          <div className="w-fill h-[475.75px] m-auto flex overflow-auto gap-11 max-w-[1500px]">
+            {/*//* Cuotas container */}
             {cuotas.map((item, index) => (
               <div
-                className="factura-container my-auto rounded-md overflow-hidden"
+                className="min-w-[320px] nunito rounded-[10px] factura-container"
                 key={index}
               >
-                <div className="text-center !bg-[#1776D8] text-white font-bold py-3">
+                <div
+                  className={`text-center !bg-[#1776D8] text-white font-bold py-3 rounded-tr-[10px] rounded-tl-[10px] ${
+                    item.id === tempKey ? "!bg-[#FF923C]" : "!bg-[#1776D8]"
+                  }`}
+                >
                   {item.title}
                 </div>
 
-                {Array.from({ length: 10 }).map((_, i) => (
-                  <div className="factura-line" key={i}>
-                    <div className="grid grid-cols-3  border-r col-span-3">
+                {Array.from({ length: 9 }).map((_, i) => (
+                  <div className="factura-line border-r border-l">
+                    <div className="grid grid-cols-3 col-span-3">
                       <div className="flex gap-3 col-span-2 text-[#0B223C] font-bold">
                         <div
                           style={{
@@ -73,8 +88,8 @@ const Home = () => {
                         ${item.letras.dinero.toFixed(2)}
                       </div>
                     </div>
-                    <div className="flex justify-end gap-3 col-span-2 pl-4">
-                      <div className="bg-[#F73838] text-white font-medium text-[13px] leading-none my-auto py-[5px] rounded-[3px] px-2">
+                    <div className=" flex justify-end gap-3 col-span-2">
+                      <div className="bg-[#F73838] text-white font-medium text-[12.5px] leading-none my-auto py-[5px] rounded-[3px] px-2">
                         {item.letras.fecha}
                       </div>
                       <div className="w-5 h-5 my-auto border-[#0B223C] border-2 rounded-full"></div>
@@ -84,15 +99,7 @@ const Home = () => {
               </div>
             ))}
           </div>
-        </div>
-        <div className="shadowCarouselLeft fixedCenterY hidden"></div>
-        <div className="shadowCarouselRight fixedCenterY right-0 hidden"></div>
-      </div>
-
-      <div className="fixed bottom-0 w-full border-t border-[#d1d1d1] bg-white ">
-        <div className="max-w-[1596px] mx-auto py-4 inter font-light text-[#b8b8b8] text-sm px-12">
-          Copyright © 2024 por RAENCO | Todos los derechos reservados
-        </div>
+        </section>
       </div>
     </main>
   );

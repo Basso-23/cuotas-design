@@ -41,4 +41,25 @@ export const cuotas = [
       fecha: "2024-04-01",
     },
   },
+
+  {
+    id: 5,
+    title: "Factura 50y6 #357",
+    letras: {
+      label: "Letra #",
+      numero: 1,
+      dinero: 24.4,
+      fecha: "2024-04-01",
+    },
+  },
+  {
+    id: 6,
+    title: "Factura 50y6 #357",
+    letras: {
+      label: "Letra #",
+      numero: 1,
+      dinero: 24.4,
+      fecha: "2024-04-01",
+    },
+  },
 ];
