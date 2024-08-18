@@ -6,7 +6,7 @@
 
 :root {
   background-color: #f5faff;
-  color: #0b223c;
+  color: #31303e;
 }
 
 @media (min-width: 640px) {
@@ -38,20 +38,24 @@
   font-family: "Nunito Variable", sans-serif;
 }
 
-.sombra {
-  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
-    rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+.pageSize {
+  max-width: 1580px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.all-facturas {
-  display: flex;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  height: fit-content;
-  gap: 40px;
+.all-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  column-gap: 10px;
+  row-gap: 25px;
 }
 
 .factura-container {
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
+    rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
+    rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
 }
 
 .factura-container .factura-line:nth-child(even) {
@@ -59,58 +63,5 @@
 }
 
 .factura-container .factura-line:nth-child(odd) {
-  background-color: #f5f5f4;
-}
-
-.factura-container .factura-line:last-child {
-  border-bottom: 1px solid #e5e7eb;
-  margin-bottom: 10px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-
-.factura-line {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  padding: 9px;
-}
-
-.shadowCarouselLeft {
-  position: absolute;
-  bottom: 0px;
-  height: 85%;
-  width: 100px;
-  background: linear-gradient(
-    90deg,
-    rgb(255, 255, 255) 1%,
-    rgba(255, 255, 255, 0) 75%
-  );
-}
-
-.shadowCarouselRight {
-  position: absolute;
-  bottom: 0px;
-  height: 85%;
-  width: 100px;
-  background: linear-gradient(
-    -90deg,
-    rgb(255, 255, 255) 1%,
-    rgba(255, 255, 255, 0) 75%
-  );
-}
-
-.fixedCenterY {
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.fixedCenterX {
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.fixedCenterXnY {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  background-color: white;
 }
