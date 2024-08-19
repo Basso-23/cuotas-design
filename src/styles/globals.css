@@ -32,3 +32,11 @@
   border-bottom-right-radius: 6px;
   border-bottom-left-radius: 6px;
 }
+
+.card-container .card-line:nth-child(odd) {
+  background-color: white;
+}
+
+.card-container .card-line:nth-child(even) {
+  background-color: #f5f9fa;
+}

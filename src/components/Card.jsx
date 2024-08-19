@@ -49,10 +49,10 @@ const Card = ({ title, category }) => {
   return (
     <section className="mx-auto bg-white card-container">
       <div className=" border relative rounded-tl-md rounded-tr-md">
-        <div className="px-[14px] flex py-2 items-center gap-4">
+        <div className="px-[14px] flex py-2 items-center gap-3">
           <div
             style={{ backgroundColor: category }}
-            className="w-[16px] aspect-square rounded-full"
+            className="w-[14px] aspect-square rounded-full"
           ></div>
           <div className="text-[12px] text-[#222d2a] font-bold">{title}</div>
         </div>
