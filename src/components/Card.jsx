@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Card = ({ title, num, category }) => {
-  const [checkedStates, setCheckedStates] = useState(Array(10).fill(true));
+  const [checkedStates, setCheckedStates] = useState(Array(12).fill(true));
 
   const handleCheck = (index) => {
     const newCheckedStates = [...checkedStates];
@@ -67,7 +67,7 @@ const Card = ({ title, num, category }) => {
         />
       ))}
 
-      <div className="py-2 px-[14px] bg-white text-[#222d2a] border border-t-0 rounded-bl-lg rounded-br-lg">
+      <div className="py-2 px-[14px] bg-white text-[#222d2a] border border-t-0 sm:rounded-bl-lg sm:rounded-br-lg">
         <div className="pt-1 pb-3 flex justify-between border-b">
           <div className="text-[#222d2a] font-bold text-[13px] py-[2px]">
             Tipo:

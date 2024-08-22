@@ -34,7 +34,7 @@ const Home = () => {
   return (
     <main className="inter">
       {/*//* Top bar */}
-      <div className="px-6 h-[52px] w-full bg-[#ffffff] flex justify-between items-center">
+      <div className="sm:px-6 px-2 h-[52px] w-full bg-[#ffffff] flex justify-between items-center">
         <div className="flex gap-2 items-center">
           {/*//* Logo */}
           <div
@@ -45,7 +45,7 @@ const Home = () => {
           ></div>
 
           {/*//* Company Name */}
-          <div className="text-[12px] mt-[1px] text-[#656875] font-medium">
+          <div className="sm:block hidden text-[12px] mt-[1px] text-[#656875] font-medium">
             Nombre de compañia
           </div>
         </div>
@@ -53,7 +53,7 @@ const Home = () => {
         {/*//* User */}
         <div className="flex gap-2 items-center">
           <div className="text-[12px] text-[#656875] font-medium">
-            Bienvenido devuelta, Carlos Baso!
+            Bienvenido devuelta, Carlos Baso
           </div>
         </div>
       </div>
@@ -64,30 +64,30 @@ const Home = () => {
           style={{
             backgroundImage: "url(https://i.imgur.com/5INhM0k.png)",
           }}
-          className="h-full w-full bg-cover bg-top bg-no-repeat"
-        ></div>
+          className="h-full w-full bg-cover bg-top bg-no-repeat relative"
+        >
+          <div className="sm:flex hidden justify-between absolute w-full bottom-[160px] px-6">
+            <div className="text-[13px] text-[#ffffff] font-medium flex items-center gap-1">
+              <span className="rotate-180">
+                <Arrow />
+              </span>
+              Deslice hacia la izquierda
+            </div>
+            <div className="text-[13px] text-[#ffffff] font-medium flex items-center gap-1">
+              Deslice hacia la derecha
+              <span>
+                <Arrow />
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="flex justify-between mx-6 mt-6 hidden">
-        <div className="text-[13px] text-[#ffffff] font-medium flex items-center gap-1">
-          <span className="rotate-180">
-            <Arrow />
-          </span>
-          Deslice hacia la izquierda
-        </div>
-        <div className="text-[13px] text-[#ffffff] font-medium flex items-center gap-1">
-          Deslice hacia la derecha
-          <span>
-            <Arrow />
-          </span>
-        </div>
-      </div>
-
-      <div className="w-full px-6 bg-[#ffffff] flex">
+      <div className="w-full sm:px-6 bg-[#ffffff] flex relative">
         <div
           ref={containerRef}
           onMouseDown={handleMouseDown}
-          className="custom-scrollbar p-8 flex overflow-auto gap-4 cursor-grab bg-white rounded-xl -mt-[150px] sombra"
+          className="custom-scrollbar sm:p-8 sm:w-[95%] w-full fixedCenterX flex overflow-auto gap-4 cursor-grab bg-white sm:rounded-tr-xl sm:rounded-tl-xl sm:-mt-[140px] mt-6 sombra sm:absolute"
         >
           <Card title={"Cuota"} num={"#1"} category={"#0069F5"} />
           <Card title={"Cotización"} num={"#1"} category={"#55BE00"} />
@@ -97,10 +97,6 @@ const Home = () => {
           <Card title={"Cuota"} num={"#3"} category={"#0069F5"} />
         </div>
       </div>
-
-      <footer className="bg-white border-t p-3 text-[#7d7d7d] text-[12px] mt-10">
-        Copyright © 2024 por Company | Todos los derechos reservados
-      </footer>
     </main>
   );
 };

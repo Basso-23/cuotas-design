@@ -21,6 +21,28 @@
   overflow-y: auto;
 }
 
+.fixedCenterY {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media (min-width: 640px) {
+  .fixedCenterX {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .sombra {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+      rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  }
+}
+
+.fixedCenterXnY {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .inter {
   font-family: "Inter Variable", sans-serif;
 }
@@ -59,9 +81,4 @@
 
 .card-container .card-line:nth-child(even) {
   background-color: #f5f9fa;
-}
-
-.sombra {
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
