@@ -4,8 +4,21 @@
 @import "@fontsource-variable/inter";
 
 :root {
-  background-color: #fffefe;
+  background-color: #ffffff;
   color: #31303e;
+}
+
+.custom-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+
+  /* Para navegadores basados en WebKit como Chrome, Safari */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Ocultar el scrollbar pero permitir el scroll */
+  overflow-y: auto;
 }
 
 .inter {
@@ -19,10 +32,17 @@
 }
 
 .all-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-  column-gap: 10px;
-  row-gap: 25px;
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .all-cards {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+  }
 }
 
 .card-container {
@@ -39,4 +59,9 @@
 
 .card-container .card-line:nth-child(even) {
   background-color: #f5f9fa;
+}
+
+.sombra {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }

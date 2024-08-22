@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Card = ({ title, category }) => {
+const Card = ({ title, num, category }) => {
   const [checkedStates, setCheckedStates] = useState(Array(10).fill(true));
 
   const handleCheck = (index) => {
@@ -31,7 +31,7 @@ const Card = ({ title, category }) => {
                 : "text-[#046C05] bg-[#CEF9BD] border-[#a6ea82]"
             }`}
           >
-            {isChecked ? <div>Pendiente</div> : <div>Pagado</div>}
+            {isChecked ? <div>Pendiente</div> : <div>Agregado</div>}
           </div>
 
           <div className="text-[12px] text-[#697789] font-medium">
@@ -47,14 +47,13 @@ const Card = ({ title, category }) => {
   };
 
   return (
-    <section className="mx-auto bg-white card-container">
-      <div className=" border relative rounded-tl-md rounded-tr-md">
-        <div className="px-[14px] flex py-2 items-center gap-3">
-          <div
-            style={{ backgroundColor: category }}
-            className="w-[14px] aspect-square rounded-full"
-          ></div>
-          <div className="text-[12px] text-[#222d2a] font-bold">{title}</div>
+    <section className="mx-auto bg-white card-container rounded-lg">
+      <div className="rounded-tl-md rounded-tr-md bg-[#0069F5]">
+        <div className="px-[14px] flex py-2 items-center gap-3 justify-between">
+          <div className="text-[13px] text-[#ffffff] font-medium">
+            Descripción de pago
+          </div>
+          <div className="text-[13px] text-[#ffffff] opacity-90">{num}</div>
         </div>
       </div>
 
@@ -67,6 +66,48 @@ const Card = ({ title, category }) => {
           onCheck={() => handleCheck(index)}
         />
       ))}
+
+      <div className="py-2 px-[14px] bg-white text-[#222d2a] border border-t-0 rounded-bl-lg rounded-br-lg">
+        <div className="pt-1 pb-3 flex justify-between border-b">
+          <div className="text-[#222d2a] font-bold text-[13px] py-[2px]">
+            Tipo:
+          </div>
+          {title === "Cuota" && (
+            <div className="border border-dashed border-[#0069F5] text-[#0069F5] rounded-full py-[2px] px-4 text-[12px] font-medium leading-none flex items-center">
+              Cuota
+            </div>
+          )}
+          {title === "Cotización" && (
+            <div className="border border-dashed border-[#55BE00] text-[#55BE00] rounded-full py-[2px] px-4 text-[12px] font-medium leading-none flex items-center">
+              Cotización
+            </div>
+          )}
+          {title === "Factura" && (
+            <div className="border border-dashed border-[#FFA500] text-[#FFA500] rounded-full py-[2px] px-4 text-[12px] font-medium leading-none flex items-center">
+              Factura
+            </div>
+          )}
+          {title === "Pedido" && (
+            <div className="border border-dashed border-[#C852C2] text-[#C852C2] rounded-full py-[2px] px-4 text-[12px] font-medium leading-none flex items-center">
+              Pedido
+            </div>
+          )}
+        </div>
+
+        <div className="grid grid-cols-2 text-[14px] mt-3">
+          {title === "Cuota" ? (
+            <div className="font-medium">Saldo actual</div>
+          ) : (
+            <div className="font-medium">Subtotal</div>
+          )}
+          <div className="font-medium text-end">$1500.00</div>
+          <div className="font-medium">ITBMS</div>
+          <div className="font-medium text-end">$105.00</div>
+
+          <div className="mt-2 font-bold text-[16px]">Total</div>
+          <div className="mt-2 font-bold text-[16px] text-end">$1605.00</div>
+        </div>
+      </div>
     </section>
   );
 };
