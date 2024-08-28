@@ -47,7 +47,7 @@ const Card = ({ title, num, category }) => {
   };
 
   return (
-    <div className="h-full w-full">
+    <div className="h-full w-full ">
       <div className="w-[370px] bg-white h-full flex flex-col gap-36 overflow-auto mx-auto custom-scrollbar rounded-lg">
         <section className="mx-auto bg-white card-container rounded-lg border">
           <div className="rounded-tl-md rounded-tr-md bg-[#0069F5]">
@@ -96,16 +96,7 @@ const Card = ({ title, num, category }) => {
               )}
             </div>
 
-            <div className="grid grid-cols-2 text-[14px] mt-3 text-left">
-              {title === "Cuota" ? (
-                <div className="font-medium">Saldo actual</div>
-              ) : (
-                <div className="font-medium">Subtotal</div>
-              )}
-              <div className="font-medium text-end">$1500.00</div>
-              <div className="font-medium">ITBMS</div>
-              <div className="font-medium text-end">$105.00</div>
-
+            <div className="grid grid-cols-2 text-[14px] mb-1 text-left">
               <div className="mt-2 font-bold text-[16px]">Total</div>
               <div className="mt-2 font-bold text-[16px] text-end">
                 $1605.00
