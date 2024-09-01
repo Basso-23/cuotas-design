@@ -1,54 +1,48 @@
-import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { Pagination, Navigation } from "swiper/modules";
 import Card from "@/components/Card";
-
-const slides = Array(6).fill(
-  <Card title="Cuota" num="#1" category="#0069F5" />
-);
-
-const renderSwiper = (slidesPerView) => (
-  <Swiper
-    style={{
-      "--swiper-navigation-color": "#0069F5",
-      "--swiper-pagination-bottom": "0px",
-    }}
-    slidesPerView={slidesPerView}
-    spaceBetween={0}
-    navigation={true}
-    modules={[Navigation]}
-    className="mySwiper"
-  >
-    {slides.map((slide, index) => (
-      <SwiperSlide key={index}>{slide}</SwiperSlide>
-    ))}
-  </Swiper>
-);
-
-const renderSwiperMobile = (slidesPerView) => (
-  <Swiper
-    style={{
-      "--swiper-navigation-color": "#0069F5",
-      "--swiper-pagination-bottom": "0px",
-    }}
-    pagination={{
-      clickable: true,
-    }}
-    slidesPerView={slidesPerView}
-    modules={[Pagination]}
-    spaceBetween={0}
-    className="mySwiper"
-  >
-    {slides.map((slide, index) => (
-      <SwiperSlide key={index}>{slide}</SwiperSlide>
-    ))}
-  </Swiper>
-);
+import React, { useRef, useEffect } from "react";
 
 const Home = () => {
+  const sliderRef = useRef(null);
+  const leftBtnRef = useRef(null);
+  const rightBtnRef = useRef(null);
+  let currentIndex = 0;
+
+  const updateSliderPosition = () => {
+    if (sliderRef.current) {
+      sliderRef.current.style.transform = `translateX(-${
+        currentIndex * 360
+      }px)`;
+    }
+  };
+
+  useEffect(() => {
+    const slider = sliderRef.current;
+    const leftBtn = leftBtnRef.current;
+    const rightBtn = rightBtnRef.current;
+
+    const handleRightClick = () => {
+      if (currentIndex < 5) {
+        currentIndex++;
+        updateSliderPosition();
+      }
+    };
+
+    const handleLeftClick = () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateSliderPosition();
+      }
+    };
+
+    if (rightBtn) rightBtn.addEventListener("click", handleRightClick);
+    if (leftBtn) leftBtn.addEventListener("click", handleLeftClick);
+
+    return () => {
+      if (rightBtn) rightBtn.removeEventListener("click", handleRightClick);
+      if (leftBtn) leftBtn.removeEventListener("click", handleLeftClick);
+    };
+  }, [currentIndex]);
+
   return (
     <main className="inter">
       <div className="desktop sm:flex hidden">
@@ -56,6 +50,7 @@ const Home = () => {
           <div className="background-design">
             <div className="top-content">
               <div className="header">Paga tus cuotas fácil y rápido</div>
+
               <div className="totals-container">
                 <div>
                   <div className="totals-title">Total</div>
@@ -70,7 +65,8 @@ const Home = () => {
                   <div className="totals-subtitle">$35.63</div>
                 </div>
               </div>
-              <div className="yappy-desktop">
+
+              <div className="yappy-desktop fixedCenterY">
                 <div className="yappy-btn-img"></div>
               </div>
             </div>
@@ -78,57 +74,40 @@ const Home = () => {
         </div>
 
         <div className="center">
-          <div className="cards-container fixedCenterXnY hidden lg:flex">
-            {renderSwiper(4)}
+          <div className="h-[100px] w-full absolute -top-1 bg-[#0168f5] rounded-br-[15px] rounded-bl-[15px] z-10"></div>
+          <button className="slider-btn left" ref={leftBtnRef} id="leftBtn">
+            <div className="arrow-back"></div>
+          </button>
+          <div className="slider-container z-50">
+            <div className="slider" ref={sliderRef} id="slider">
+              <div className="slide">
+                <Card title="Cuota" num="#1" category="#0069F5" />
+              </div>
+              <div className="slide">
+                <Card title="Cuota" num="#1" category="#0069F5" />
+              </div>
+              <div className="slide">
+                <Card title="Cuota" num="#1" category="#0069F5" />
+              </div>
+              <div className="slide">
+                <Card title="Cuota" num="#1" category="#0069F5" />
+              </div>
+              <div className="slide">
+                <Card title="Cuota" num="#1" category="#0069F5" />
+              </div>
+              <div className="slide">
+                <Card title="Cuota" num="#1" category="#0069F5" />
+              </div>
+            </div>
           </div>
-          <div className="cards-container fixedCenterXnY hidden md:flex lg:hidden">
-            {renderSwiper(3)}
-          </div>
-          <div className="cards-container fixedCenterXnY hidden sm:flex md:hidden">
-            {renderSwiper(2)}
-          </div>
+          <button className="slider-btn right" ref={rightBtnRef} id="rightBtn">
+            <div className="arrow-next"></div>
+          </button>
+          <div className="h-[100px] w-full absolute -bottom-1 bg-[#0168f5] rounded-tr-[15px] rounded-tl-[15px] z-10"></div>
         </div>
 
         <div className="bottom">
           <div className="background-design"></div>
-        </div>
-      </div>
-
-      <div className="mobile sm:hidden flex">
-        <div className="top-mobile">
-          <div className="background-design">
-            <div className="header-mobile">Paga tus cuotas fácil y rápido</div>
-            <div className="totals-container-mobile">
-              <div>
-                <div className="totals-title-mobile">Total</div>
-                <div className="totals-subtitle-mobile">$544.62</div>
-              </div>
-              <div>
-                <div className="totals-title-mobile">Subtotal</div>
-                <div className="totals-subtitle-mobile">$508.99</div>
-              </div>
-              <div>
-                <div className="totals-title-mobile">ITBMS</div>
-                <div className="totals-subtitle-mobile">$35.63</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="center-mobile">
-          <div className="cards-container-mobile fixedCenterXnY">
-            {renderSwiperMobile(1)}
-          </div>
-        </div>
-
-        <div className="bottom-mobile">
-          <div className="background-design">
-            <div className=" w-8 h-fit aspect-square bg-white"></div>
-            <div className="yappy-mobile">
-              <div className="yappy-btn-img"></div>
-            </div>
-            <div className=" w-8 h-fit aspect-square bg-white"></div>
-          </div>
         </div>
       </div>
     </main>
