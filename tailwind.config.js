@@ -7,20 +7,17 @@ module.exports = {
   ],
   theme: {
     screens: {
-      sm: "640px",
+      sm: "1030px",
       // => @media (min-width: 640px) { ... }
 
-      md: "1000px",
+      md: "1540px",
       // => @media (min-width: 768px) { ... }
 
-      lg: "1025px",
+      lg: "2000px",
       // => @media (min-width: 1024px) { ... }
 
-      xl: "1280px",
+      xl: "2500px",
       // => @media (min-width: 1280px) { ... }
-
-      "2xl": "1350px",
-      // => @media (min-width: 1536px) { ... }
     },
     extend: {
       backgroundImage: {
