@@ -47,7 +47,7 @@ const Card = ({ title, num, category }) => {
   };
 
   return (
-    <div className="w-full my-auto">
+    <div className="w-[360px] min-w-[360px] my-auto">
       <section className="w-full m-auto">
         <div className="rounded-tl-md rounded-tr-md bg-[#0069F5]">
           <div className="px-[14px] flex py-2 items-center gap-3 justify-center relative">
